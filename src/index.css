@@ -117,27 +117,30 @@ h1 {
 }
 
 main {
-  display: grid;
-  grid-template-rows: 1fr 1fr;
   height: 100%;
   position: relative;
+  overflow: hidden;
+}
+.wrapper {
+  width: 100%;
+  height: 150%;
 }
 .carousel-enter {
-  transform: translateX(-100%); /* Adjust for desired initial position */
+  transform: translateY(-100%); /* Adjust for desired initial position */
   transition: transform 600ms ease-in-out;
 }
 
 .carousel-enter-active {
-  transform: translateX(-100%);
+  transform: translateY(-100%);
   transition: transform 600ms ease-in-out;
 }
 .carousel-exit {
-  transform: translateX(-100%);
+  transform: translateY(-100%);
   transition: transform 600ms ease-in-out;
 }
 
 .carousel-exit-active {
-  transform: translateX(-100%); /* Adjust for desired exit direction */
+  transform: translateY(-100%); /* Adjust for desired exit direction */
   transition: transform 600ms ease-in-out;
 }
 
@@ -161,14 +164,8 @@ main {
   background-size: cover;
   background-position: 50%;
   position: relative;
-}
-
-.outside {
-  display: none;
-  position: absolute;
-  right: -100%;
-  width: 100%;
-  height: 100%;
+  height: 33.33333%;
+  float: left;
 }
 
 .container p {
@@ -209,6 +206,11 @@ button {
   cursor: pointer;
 }
 
+button:hover {
+  background-color: white;
+  color: black;
+}
+
 .button {
   border: 0.125rem solid white;
   background-color: transparent;
@@ -225,12 +227,33 @@ button {
   h1 {
     font-size: 2.5em;
   }
-  main {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr;
-  }
   .right {
     padding: 1em;
+  }
+
+  .wrapper {
+    width: 150%;
+    height: 100%;
+  }
+
+  .container {
+    width: 33.33333%;
+    height: 100%;
+  }
+
+  .carousel-enter {
+    transform: translateX(-100%); /* Adjust for desired initial position */
+  }
+
+  .carousel-enter-active {
+    transform: translateX(-100%);
+  }
+  .carousel-exit {
+    transform: translateX(-100%);
+  }
+
+  .carousel-exit-active {
+    transform: translateX(-100%); /* Adjust for desired exit direction */
   }
 
   h2 {
