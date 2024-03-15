@@ -4,6 +4,7 @@ import ImageTitle from "./ImageTitle";
 import DisplayButtonOrCount from "./DisplayButtonOrCount";
 import { Image } from "../lib/types";
 import { motion } from "framer-motion";
+import Paragraph from "./Paragraph";
 
 type ImageComponentProps = {
   image: Image;
@@ -35,7 +36,7 @@ const ImageComponent = ({ image, idx }: ImageComponentProps) => {
       </div>
       <div className="bottom">
         <DisplayButtonOrCount idx={idx} value={image.value} />
-        <p>searches than Search Item 1</p>
+        <Paragraph idx={idx} />
       </div>
     </motion.div>
   );

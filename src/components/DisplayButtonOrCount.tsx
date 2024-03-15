@@ -1,5 +1,6 @@
 import CountUp from "react-countup";
 import { useImageStore } from "../stores/imageStore";
+import { motion } from "framer-motion";
 
 type DisplayButtonOrCountProps = {
   idx: number;
@@ -16,13 +17,17 @@ const DisplayButtonOrCount = ({ idx, value }: DisplayButtonOrCountProps) => {
     return <h3>{value.toLocaleString()}</h3>;
   }
   if (idx == 1) {
-    return clicked ? (
-      <h3>
+    return isAnimating || clicked ? (
+      <motion.h3
+        initial={{ opacity: 0, y: 100 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
         <CountUp
           end={value}
           onEnd={() => useImageStore.setState({ isAnimating: !isAnimating })}
         />
-      </h3>
+      </motion.h3>
     ) : (
       <>
         <button onClick={onClickHigher}>Upper</button>
