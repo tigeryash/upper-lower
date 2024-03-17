@@ -14,7 +14,6 @@ type ImageComponentProps = {
 const ImageComponent = ({ image, idx }: ImageComponentProps) => {
   const isAnimating = useImageStore((state) => state.isAnimating);
   const isMobile = window.matchMedia("(max-width: 768px)").matches;
-  console.log("isAnimating", isAnimating);
 
   return (
     <motion.div
