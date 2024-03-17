@@ -25,7 +25,12 @@ const DisplayButtonOrCount = ({ idx, value }: DisplayButtonOrCountProps) => {
       >
         <CountUp
           end={value}
-          onEnd={() => useImageStore.setState({ isAnimating: !isAnimating })}
+          duration={1}
+          onEnd={() => {
+            setTimeout(() => {
+              useImageStore.setState({ isAnimating: !isAnimating });
+            }, 200);
+          }}
         />
       </motion.h3>
     ) : (

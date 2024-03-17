@@ -38,19 +38,20 @@ export const useImageStore = create<Store>((set, get) => ({
     if (second.value >= first.value) {
       setTimeout(() => {
         set(() => ({ score: get().score + 1 }));
-        set(() => ({ clicked: false }));
         const randomIndices = get().getUniqueRandomIndices(
           1,
           get().images.length
         );
         const randomImages = randomIndices.map((index) => get().images[index]);
         set(() => ({ display: [...get().display.slice(1), ...randomImages] }));
-      }, 2800);
+        set(() => ({ clicked: false }));
+      }, 2200);
     } else {
       setTimeout(() => {
         set(() => ({ clicked: false }));
+        set(() => ({ isAnimating: false }));
         set(() => ({ playing: false }));
-      }, 2000);
+      }, 1000);
     }
   },
   handleClickLower: () => {
@@ -59,19 +60,20 @@ export const useImageStore = create<Store>((set, get) => ({
     if (second.value <= first.value) {
       setTimeout(() => {
         set(() => ({ score: get().score + 1 }));
-        set(() => ({ clicked: false }));
         const randomIndices = get().getUniqueRandomIndices(
           1,
           get().images.length
         );
         const randomImages = randomIndices.map((index) => get().images[index]);
         set(() => ({ display: [...get().display.slice(1), ...randomImages] }));
-      }, 2800);
+        set(() => ({ clicked: false }));
+      }, 2200);
     } else {
       setTimeout(() => {
         set(() => ({ clicked: false }));
+        set(() => ({ isAnimating: false }));
         set(() => ({ playing: false }));
-      }, 2000);
+      }, 1000);
     }
   },
 
@@ -81,16 +83,17 @@ export const useImageStore = create<Store>((set, get) => ({
     const randomIndices = get().getUniqueRandomIndices(3, get().images.length);
     const randomImages = randomIndices.map((index) => get().images[index]);
     set(() => ({ display: randomImages }));
+    set(() => ({ isAnimating: false }));
   },
   fetchImages: async () => {
     try {
       const response = await fetch(
         "https://picsum.photos/v2/list?page=1&limit=10"
       );
+      const data = await response.json();
       if (!response.ok) {
         throw new Error("Server Error");
       }
-      const data = await response.json();
       const newData: Image[] = data.map((image: Tdata) => {
         return {
           ...image,

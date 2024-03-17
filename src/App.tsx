@@ -13,7 +13,7 @@ function App() {
 
   useEffect(() => {
     fetchImages();
-  }, [fetchImages]);
+  }, []);
 
   useEffect(() => {
     if (score > highScore) {
@@ -38,7 +38,11 @@ function App() {
       <div className="app">
         <Header />
 
-        {images.length && <Images />}
+        {images.length > 0 ? (
+          <Images />
+        ) : (
+          <h1 style={{ color: "black" }}>Loading...</h1>
+        )}
       </div>
     );
 }

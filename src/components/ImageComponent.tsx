@@ -22,7 +22,7 @@ const ImageComponent = ({ image, idx }: ImageComponentProps) => {
       exit={
         isAnimating ? (isMobile ? { y: "-100%" } : { x: "-100%" }) : { x: 0 }
       }
-      transition={{ duration: 0.75 }}
+      transition={{ duration: 1 }}
       onAnimationComplete={() => {
         useImageStore.setState({ isAnimating: false });
       }}

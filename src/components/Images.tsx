@@ -1,6 +1,7 @@
 import { useImageStore } from "../stores/imageStore";
 import ImageComponent from "./ImageComponent";
 import { AnimatePresence } from "framer-motion";
+import { v4 as uuidV4 } from "uuid";
 
 const Images = () => {
   const display = useImageStore((state) => state.display);
@@ -12,11 +13,7 @@ const Images = () => {
         <AnimatePresence>
           {!isAnimating &&
             display.map((image, idx) => (
-              <ImageComponent
-                key={`${image.id}-${idx}`}
-                image={image}
-                idx={idx}
-              />
+              <ImageComponent key={uuidV4()} image={image} idx={idx} />
             ))}
         </AnimatePresence>
       </div>
